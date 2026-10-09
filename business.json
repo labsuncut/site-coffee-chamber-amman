@@ -1,0 +1,23 @@
+{
+  "_note": "Facts about the business. Empty = not known yet.",
+  "name": "The Coffee Chamber",
+  "name_ar": "ذا كوفي تشيمبر",
+  "tagline": "Where elegance meets tradition",
+  "category": "Café and all-day dining",
+  "phone": "+962788000078",
+  "whatsapp": "962788000078 (assumed same as phone, to confirm)",
+  "email": "",
+  "address": { "street": "The St. Regis Amman, Shafiq Al Hayek Street", "area": "Fifth Circle", "city": "Amman", "country": "JO" },
+  "hours": "Daily 09:00-24:00 (from TipNTag listing, to confirm)",
+  "menu": "assets/js/menu.js, from printed menu photos sent 2026-10-09",
+  "reviews": [],
+  "colors": { "charcoal": "#1d1c1b", "gold": "#c6a768", "teal": "#1f4e4b" },
+  "links": { "facebook": "https://www.facebook.com/The-Coffee-Chamber-103624985426412", "instagram": "", "google": "" },
+  "languages": ["en", "ar"],
+  "sources": [
+    "https://mindtrip.ai/restaurant/amman-governorate/coffee-chamber/re-OCGK8kHe",
+    "https://www.tipntag.com/place/s/the-coffee-chamber-Amman-Jordan",
+    "Menu and photos sent by LabsUncut in the project thread, 2026-10-09"
+  ],
+  "domain": ""
+}

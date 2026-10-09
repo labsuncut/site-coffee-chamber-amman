@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Coffee Chamber | Café at The St. Regis Amman</title>
+  <meta name="description" content="The Coffee Chamber: specialty coffee, signature drinks and all-day dining at The St. Regis Amman, Fifth Circle. Call +962 78 800 0078.">
+  <meta property="og:title" content="The Coffee Chamber, Amman">
+  <meta property="og:description" content="Where elegance meets tradition. Specialty coffee and all-day dining at The St. Regis Amman.">
+  <meta property="og:image" content="assets/img/interior.jpg">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <!-- Facts for Google search results. Keep in sync with business.json. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "The Coffee Chamber",
+    "telephone": "+962788000078",
+    "servesCuisine": ["Coffee", "International"],
+    "priceRange": "JD 2-14",
+    "image": "assets/img/interior.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "The St. Regis Amman, Shafiq Al Hayek Street, Fifth Circle",
+      "addressLocality": "Amman",
+      "addressCountry": "JO"
+    },
+    "openingHours": "Mo-Su 09:00-24:00"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="#top" data-i18n="name">The Coffee Chamber</a>
+      <nav class="nav">
+        <a href="#menu" data-i18n="nav_menu">Menu</a>
+        <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+        <a href="#visit" data-i18n="nav_visit">Visit</a>
+        <!-- INTERACTIVE 1: language switch (assets/js/site.js) -->
+        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="hero-img" src="assets/img/interior.jpg" alt="Inside The Coffee Chamber">
+      <div class="wrap hero-inner">
+        <!-- INTERACTIVE 2: live open/closed badge -->
+        <p class="status" id="open-status"><span class="dot"></span><span class="status-text">&nbsp;</span></p>
+        <h1 data-i18n="hero_title">Where elegance meets tradition</h1>
+        <p class="lead" data-i18n="hero_sub">Specialty coffee, signature drinks and all-day dining at The St. Regis Amman, Fifth Circle.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#menu" data-i18n="cta_menu">View the menu</a>
+          <a class="btn btn-ghost" href="tel:+962788000078" data-i18n="cta_call">Call to book</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights reveal">
+      <div class="wrap highlights-row">
+        <div><h3 data-i18n="hl1_t">Signature drinks</h3><p data-i18n="hl1_d">Twelve house creations, from Blue Ocean to Heart of Gold.</p></div>
+        <div><h3 data-i18n="hl2_t">Breakfast to dinner</h3><p data-i18n="hl2_d">Croissants and manakeesh in the morning, steak and salmon at night.</p></div>
+        <div><h3 data-i18n="hl3_t">Keto and vegan</h3><p data-i18n="hl3_d">Keto plates with full nutrition, plus soya, almond and coconut milk.</p></div>
+      </div>
+    </section>
+
+    <section id="menu" class="section reveal">
+      <div class="wrap">
+        <p class="eyebrow" data-i18n="menu_eyebrow">The menu</p>
+        <h2 data-i18n="menu_title">Coffee, plates and everything between</h2>
+        <!-- INTERACTIVE 3: search + tabs. The menu itself is in assets/js/menu.js -->
+        <div class="menu-tools">
+          <input class="search" id="menu-search" type="search" placeholder="Search the menu" data-i18n-placeholder="search">
+        </div>
+        <div class="tabs" id="menu-tabs" role="tablist"></div>
+        <div id="menu-body"></div>
+        <p class="note" data-i18n="menu_tax">Prices in Jordanian dinars. 10% service charge and 16% sales tax are added.</p>
+      </div>
+    </section>
+
+    <section id="gallery" class="section section-dark reveal">
+      <div class="wrap">
+        <p class="eyebrow" data-i18n="gallery_eyebrow">Gallery</p>
+        <h2 data-i18n="gallery_title">A place to enjoy</h2>
+        <!-- INTERACTIVE 4: tap a photo to open it full screen; swipe or use arrows -->
+        <div class="gallery">
+          <button class="shot tall" type="button"><img src="assets/img/seating.jpg" alt="Velvet seating by the window" loading="lazy"></button>
+          <button class="shot" type="button"><img src="assets/img/signature-drink.jpg" alt="A signature drink" loading="lazy"></button>
+          <button class="shot tall" type="button"><img src="assets/img/terrace.jpg" alt="The outdoor terrace" loading="lazy"></button>
+          <button class="shot" type="button"><img src="assets/img/penne-pesto.jpg" alt="Penne pesto with chicken" loading="lazy"></button>
+          <button class="shot tall" type="button"><img src="assets/img/burrata-dynamite.jpg" alt="Burrata salad and dynamite shrimps" loading="lazy"></button>
+          <button class="shot" type="button"><img src="assets/img/mango-salad.jpg" alt="Baby spinach and mango salad" loading="lazy"></button>
+          <button class="shot" type="button"><img src="assets/img/grinder.jpg" alt="Coffee grinder on the marble table" loading="lazy"></button>
+          <button class="shot" type="button"><img src="assets/img/grilled-chicken.jpg" alt="Grilled chicken with mashed potato" loading="lazy"></button>
+          <button class="shot" type="button"><img src="assets/img/spaghetti.jpg" alt="Spaghetti bolognese" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="section reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow" data-i18n="visit_eyebrow">Visit</p>
+          <h2 data-i18n="visit_title">Find us at The St. Regis</h2>
+          <p class="address" data-i18n="address">The St. Regis Amman, Shafiq Al Hayek Street, Fifth Circle, Amman</p>
+          <table class="hours" id="hours-table"></table>
+          <p class="contact-line"><a href="tel:+962788000078" dir="ltr">+962 78 800 0078</a></p>
+          <div class="hero-actions">
+            <a class="btn btn-whatsapp" id="whatsapp-btn" href="#visit" data-i18n="cta_whatsapp">WhatsApp us</a>
+            <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=The+Coffee+Chamber+St+Regis+Amman" data-i18n="cta_directions">Directions</a>
+          </div>
+        </div>
+        <iframe class="map" title="Map to The Coffee Chamber" loading="lazy"
+          src="https://www.google.com/maps?q=The+St.+Regis+Amman&amp;output=embed"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <p class="logo" data-i18n="name">The Coffee Chamber</p>
+      <p>&copy; <span id="year">2026</span> &middot; <span data-i18n="city">Amman, Jordan</span> &middot;
+        <a href="https://www.facebook.com/The-Coffee-Chamber-103624985426412">Facebook</a></p>
+    </div>
+  </footer>
+
+  <a class="wa-float" id="wa-float" href="#visit" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4.3-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+  </a>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-btn lb-close" type="button" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous">&#8249;</button>
+    <img class="lb-img" alt="">
+    <button class="lb-btn lb-next" type="button" aria-label="Next">&#8250;</button>
+  </div>
+
+  <script src="assets/js/menu.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

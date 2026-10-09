@@ -24,7 +24,7 @@ const TEXT = {
     menu_eyebrow: 'The menu', menu_title: 'Coffee, plates and everything between',
     search: 'Search the menu', no_results: 'Nothing matches that. Try another word.',
     menu_tax: 'Prices in Jordanian dinars. 10% service charge and 16% sales tax are added.',
-    gallery_eyebrow: 'Gallery', gallery_title: 'A place to enjoy',
+    gallery_eyebrow: 'Gallery', gallery_title: 'Inside the Chamber',
     visit_eyebrow: 'Visit', visit_title: 'Find us at The St. Regis',
     address: 'The St. Regis Amman, Shafiq Al Hayek Street, Fifth Circle, Amman',
     open_now: 'Open now', closes_at: 'closes at', closed_now: 'Closed now', opens_at: 'opens at', closed: 'Closed',
@@ -35,6 +35,9 @@ const TEXT = {
     f_note_ph: 'Birthday, window seat, high chair...', f_send: 'Send on WhatsApp',
     wa_booking: 'Hello, I would like to book a table at The Coffee Chamber.', wa_name: 'Name', wa_guests: 'Guests', wa_date: 'Date', wa_time: 'Time', wa_note: 'Note',
     back_home: 'Back to the website',
+    story_eyebrow: 'Our space', story_title: 'A place to enjoy', story_link: 'See the gallery',
+    story_p1: 'Inside The St. Regis Amman, The Coffee Chamber pairs green velvet, white marble and gold with a slow, unhurried pace.',
+    story_p2: 'Take a table on the terrace under the olive tree, or settle in indoors with a signature drink.',
     am: 'AM', pm: 'PM', currency: 'JD', switch_to: 'العربية',
   },
   ar: {
@@ -49,7 +52,7 @@ const TEXT = {
     menu_eyebrow: 'القائمة', menu_title: 'قهوة وأطباق وكل ما بينهما',
     search: 'ابحث في القائمة', no_results: 'لا يوجد شيء بهذا الاسم. جرّب كلمة أخرى.',
     menu_tax: 'الأسعار بالدينار الأردني. تضاف رسوم خدمة 10% وضريبة مبيعات 16%.',
-    gallery_eyebrow: 'الصور', gallery_title: 'مكان للاستمتاع',
+    gallery_eyebrow: 'الصور', gallery_title: 'من داخل المقهى',
     visit_eyebrow: 'زورونا', visit_title: 'تجدوننا في سانت ريجيس',
     address: 'فندق سانت ريجيس عمّان، شارع شفيق الحايك، الدوار الخامس، عمّان',
     open_now: 'مفتوح الآن', closes_at: 'يغلق الساعة', closed_now: 'مغلق الآن', opens_at: 'يفتح الساعة', closed: 'مغلق',
@@ -60,6 +63,9 @@ const TEXT = {
     f_note_ph: 'عيد ميلاد، طاولة جنب الشباك، كرسي أطفال...', f_send: 'أرسل على واتساب',
     wa_booking: 'مرحبا، بدي أحجز طاولة في ذا كوفي تشيمبر.', wa_name: 'الاسم', wa_guests: 'عدد الأشخاص', wa_date: 'التاريخ', wa_time: 'الوقت', wa_note: 'ملاحظة',
     back_home: 'الرجوع للموقع',
+    story_eyebrow: 'المكان', story_title: 'مكان للاستمتاع', story_link: 'شوف الصور',
+    story_p1: 'داخل فندق سانت ريجيس عمّان، يجمع ذا كوفي تشيمبر بين المخمل الأخضر والرخام الأبيض والذهبي، بإيقاع هادئ ومريح.',
+    story_p2: 'اختر طاولة على التراس تحت شجرة الزيتون، أو استرخِ في الداخل مع أحد مشروباتنا المميزة.',
     am: 'ص', pm: 'م', currency: 'د.أ', switch_to: 'English',
   },
 };
@@ -87,6 +93,15 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
   try { localStorage.setItem('lang', lang); } catch (e) {}
   applyLanguage();
 });
+
+// ---------- PHONE MENU BUTTON ----------
+const menuBtn = document.getElementById('menu-btn');
+if (menuBtn) {
+  const nav = document.getElementById('site-nav');
+  const setOpen = open => { nav.classList.toggle('is-open', open); menuBtn.classList.toggle('is-open', open); menuBtn.setAttribute('aria-expanded', open); };
+  menuBtn.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+}
 
 // ---------- 2. OPEN NOW BADGE + HOURS ----------
 function nowInAmman() {

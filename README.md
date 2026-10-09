@@ -13,4 +13,5 @@ Website for The Coffee Chamber, a café at The St. Regis Amman, Fifth Circle, Am
 | Page words (English and Arabic) | `TEXT` in `assets/js/site.js` |
 | Opening hours, WhatsApp number | `SETTINGS` at the top of `assets/js/site.js` |
 | Colours and fonts | top of `assets/css/site.css` |
+| Table QR card (print it) | `qr.html`; the code itself is `assets/img/menu-qr.svg` |
 | Photos | `assets/img/`, and the gallery section of `index.html` |

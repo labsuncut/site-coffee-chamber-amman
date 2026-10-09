@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Table QR card | The Coffee Chamber</title>
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Tajawal:wght@500&display=swap" rel="stylesheet">
+  <!-- Printable table card. Print it (Ctrl/Cmd + P), cut along the edge, put one on each table.
+       The QR code (assets/img/menu-qr.svg) opens menu.html. Regenerate it if the site moves to the café's own domain. -->
+  <style>
+    body { margin: 0; background: #eee; font-family: "Tajawal", sans-serif; display: grid; place-items: center; min-height: 100vh; }
+    .card { width: 90mm; padding: 10mm 8mm; background: #1d1c1b; color: #e3cfa3; text-align: center; border-radius: 6mm; border: 0.6mm solid #c6a768; }
+    h1 { font-family: "Cinzel", serif; font-size: 7mm; letter-spacing: 0.06em; margin: 0 0 2mm; color: #c6a768; }
+    .qr { background: #fff; padding: 3mm; border-radius: 3mm; width: 48mm; margin: 5mm auto; }
+    .qr img { width: 100%; display: block; }
+    p { margin: 1mm 0; font-size: 4.2mm; }
+    .ar { direction: rtl; }
+    @media print { body { background: #fff; } }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>The Coffee Chamber</h1>
+    <div class="qr"><img src="assets/img/menu-qr.svg" alt="QR code for the menu"></div>
+    <p>Scan for the menu</p>
+    <p class="ar">امسح الرمز لعرض القائمة</p>
+  </div>
+</body>
+</html>

@@ -24,11 +24,20 @@ const TEXT = {
     menu_eyebrow: 'The menu', menu_title: 'Coffee, plates and everything between',
     search: 'Search the menu', no_results: 'Nothing matches that. Try another word.',
     menu_tax: 'Prices in Jordanian dinars. 10% service charge and 16% sales tax are added.',
-    gallery_eyebrow: 'Gallery', gallery_title: 'A place to enjoy',
+    gallery_eyebrow: 'Gallery', gallery_title: 'Inside the Chamber',
     visit_eyebrow: 'Visit', visit_title: 'Find us at The St. Regis',
     address: 'The St. Regis Amman, Shafiq Al Hayek Street, Fifth Circle, Amman',
     open_now: 'Open now', closes_at: 'closes at', closed_now: 'Closed now', opens_at: 'opens at', closed: 'Closed',
     days: { sat: 'Saturday', sun: 'Sunday', mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday' },
+    nav_book: 'Book', cta_book: 'Book a table', menu_qr_link: 'Open the menu on its own page',
+    book_eyebrow: 'Reservations', book_title: 'Book a table', book_sub: "Pick a time and we'll confirm on WhatsApp.",
+    f_name: 'Name', f_guests: 'Guests', f_date: 'Date', f_time: 'Time', f_note: 'Anything we should know?',
+    f_note_ph: 'Birthday, window seat, high chair...', f_send: 'Send on WhatsApp',
+    wa_booking: 'Hello, I would like to book a table at The Coffee Chamber.', wa_name: 'Name', wa_guests: 'Guests', wa_date: 'Date', wa_time: 'Time', wa_note: 'Note',
+    back_home: 'Back to the website',
+    story_eyebrow: 'Our space', story_title: 'A place to enjoy', story_link: 'See the gallery',
+    story_p1: 'Inside The St. Regis Amman, The Coffee Chamber pairs green velvet, white marble and gold with a slow, unhurried pace.',
+    story_p2: 'Take a table on the terrace under the olive tree, or settle in indoors with a signature drink.',
     am: 'AM', pm: 'PM', currency: 'JD', switch_to: 'العربية',
   },
   ar: {
@@ -43,11 +52,20 @@ const TEXT = {
     menu_eyebrow: 'القائمة', menu_title: 'قهوة وأطباق وكل ما بينهما',
     search: 'ابحث في القائمة', no_results: 'لا يوجد شيء بهذا الاسم. جرّب كلمة أخرى.',
     menu_tax: 'الأسعار بالدينار الأردني. تضاف رسوم خدمة 10% وضريبة مبيعات 16%.',
-    gallery_eyebrow: 'الصور', gallery_title: 'مكان للاستمتاع',
+    gallery_eyebrow: 'الصور', gallery_title: 'من داخل المقهى',
     visit_eyebrow: 'زورونا', visit_title: 'تجدوننا في سانت ريجيس',
     address: 'فندق سانت ريجيس عمّان، شارع شفيق الحايك، الدوار الخامس، عمّان',
     open_now: 'مفتوح الآن', closes_at: 'يغلق الساعة', closed_now: 'مغلق الآن', opens_at: 'يفتح الساعة', closed: 'مغلق',
     days: { sat: 'السبت', sun: 'الأحد', mon: 'الاثنين', tue: 'الثلاثاء', wed: 'الأربعاء', thu: 'الخميس', fri: 'الجمعة' },
+    nav_book: 'احجز', cta_book: 'احجز طاولة', menu_qr_link: 'افتح القائمة في صفحة مستقلة',
+    book_eyebrow: 'الحجوزات', book_title: 'احجز طاولة', book_sub: 'اختر الوقت وسنؤكد حجزك على واتساب.',
+    f_name: 'الاسم', f_guests: 'عدد الأشخاص', f_date: 'التاريخ', f_time: 'الوقت', f_note: 'أي ملاحظات؟',
+    f_note_ph: 'عيد ميلاد، طاولة جنب الشباك، كرسي أطفال...', f_send: 'أرسل على واتساب',
+    wa_booking: 'مرحبا، بدي أحجز طاولة في ذا كوفي تشيمبر.', wa_name: 'الاسم', wa_guests: 'عدد الأشخاص', wa_date: 'التاريخ', wa_time: 'الوقت', wa_note: 'ملاحظة',
+    back_home: 'الرجوع للموقع',
+    story_eyebrow: 'المكان', story_title: 'مكان للاستمتاع', story_link: 'شوف الصور',
+    story_p1: 'داخل فندق سانت ريجيس عمّان، يجمع ذا كوفي تشيمبر بين المخمل الأخضر والرخام الأبيض والذهبي، بإيقاع هادئ ومريح.',
+    story_p2: 'اختر طاولة على التراس تحت شجرة الزيتون، أو استرخِ في الداخل مع أحد مشروباتنا المميزة.',
     am: 'ص', pm: 'م', currency: 'د.أ', switch_to: 'English',
   },
 };
@@ -64,6 +82,7 @@ function applyLanguage() {
   document.querySelectorAll('[data-i18n]').forEach(el => { if (t[el.dataset.i18n]) el.textContent = t[el.dataset.i18n]; });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = t[el.dataset.i18nPlaceholder]; });
   document.getElementById('lang-toggle').textContent = t.switch_to;
+  renderTimes();
   renderTabs();
   renderMenu();
   renderHours();
@@ -74,6 +93,15 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
   try { localStorage.setItem('lang', lang); } catch (e) {}
   applyLanguage();
 });
+
+// ---------- PHONE MENU BUTTON ----------
+const menuBtn = document.getElementById('menu-btn');
+if (menuBtn) {
+  const nav = document.getElementById('site-nav');
+  const setOpen = open => { nav.classList.toggle('is-open', open); menuBtn.classList.toggle('is-open', open); menuBtn.setAttribute('aria-expanded', open); };
+  menuBtn.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+}
 
 // ---------- 2. OPEN NOW BADGE + HOURS ----------
 function nowInAmman() {
@@ -87,6 +115,7 @@ const pretty = hhmm => {
   return `${h % 12 || 12}:${hhmm.slice(3)} ${h < 12 ? t.am : t.pm}`;
 };
 function renderStatus() {
+  if (!document.getElementById('open-status')) return;
   const t = TEXT[lang], now = nowInAmman(), today = HOURS[now.day];
   const isOpen = today && now.minutes >= toMinutes(today[0]) && now.minutes < toMinutes(today[1]);
   const box = document.getElementById('open-status');
@@ -98,6 +127,7 @@ function renderStatus() {
     : t.closed_now;
 }
 function renderHours() {
+  if (!document.getElementById('hours-table')) return;
   const t = TEXT[lang], today = nowInAmman().day;
   document.getElementById('hours-table').innerHTML = ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri'].map(d => {
     const h = HOURS[d];
@@ -146,8 +176,8 @@ searchBox.addEventListener('input', renderMenu);
 
 // ---------- 4. PHOTO LIGHTBOX (tap, arrows, swipe, keyboard) ----------
 const shots = [...document.querySelectorAll('.shot img')];
-const lightbox = document.getElementById('lightbox');
-const lbImg = lightbox.querySelector('.lb-img');
+const lightbox = document.getElementById('lightbox') || document.createElement('div');
+const lbImg = lightbox.querySelector('.lb-img') || document.createElement('img');
 let current = 0;
 function show(i) {
   current = (i + shots.length) % shots.length;
@@ -156,6 +186,7 @@ function show(i) {
   lightbox.hidden = false;
 }
 shots.forEach((img, i) => img.parentElement.addEventListener('click', () => show(i)));
+if (shots.length) {
 lightbox.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); show(current - 1); });
 lightbox.querySelector('.lb-next').addEventListener('click', e => { e.stopPropagation(); show(current + 1); });
 lightbox.addEventListener('click', e => { if (e.target === lightbox || e.target.classList.contains('lb-close')) lightbox.hidden = true; });
@@ -173,15 +204,41 @@ lightbox.addEventListener('touchend', e => {
   if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
   touchX = null;
 });
+}
 
 // ---------- 5. WHATSAPP ----------
-if (WHATSAPP) {
-  const link = `https://wa.me/${WHATSAPP}`;
-  document.getElementById('whatsapp-btn').href = link;
-  document.getElementById('wa-float').href = link;
-} else {
-  document.getElementById('whatsapp-btn').hidden = true;
-  document.getElementById('wa-float').hidden = true;
+['whatsapp-btn', 'wa-float'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (WHATSAPP) el.href = `https://wa.me/${WHATSAPP}`; else el.hidden = true;
+});
+
+// ---------- 7. BOOKING FORM -> WHATSAPP ----------
+// Offers half-hour slots inside opening hours, then opens WhatsApp with the booking written out.
+const bookForm = document.getElementById('book-form');
+function renderTimes() {
+  const select = document.getElementById('book-time');
+  if (!select) return;
+  const kept = select.value;
+  const [open, close] = HOURS.sat || ['09:00', '24:00'];
+  const slots = [];
+  for (let m = toMinutes(open); m <= toMinutes(close) - 60; m += 30) {
+    const hh = String(Math.floor(m / 60)).padStart(2, '0'), mm = String(m % 60).padStart(2, '0');
+    slots.push(`${hh}:${mm}`);
+  }
+  select.innerHTML = slots.map(s => `<option value="${s}">${pretty(s)}</option>`).join('');
+  if (kept) select.value = kept; else select.value = '19:00';
+}
+if (bookForm) {
+  bookForm.date.min = new Date().toISOString().slice(0, 10);
+  bookForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const t = TEXT[lang], f = bookForm;
+    const lines = [t.wa_booking, `${t.wa_name}: ${f.name.value}`, `${t.wa_guests}: ${f.guests.value}`,
+      `${t.wa_date}: ${f.date.value}`, `${t.wa_time}: ${pretty(f.time.value)}`];
+    if (f.note.value.trim()) lines.push(`${t.wa_note}: ${f.note.value.trim()}`);
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+  });
 }
 
 // ---------- 6. FADE-IN ON SCROLL ----------
@@ -190,5 +247,6 @@ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
 }), { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
 applyLanguage();

@@ -40,6 +40,7 @@
       <nav class="nav">
         <a href="#menu" data-i18n="nav_menu">Menu</a>
         <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+        <a href="#book" data-i18n="nav_book">Book</a>
         <a href="#visit" data-i18n="nav_visit">Visit</a>
         <!-- INTERACTIVE 1: language switch (assets/js/site.js) -->
         <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
@@ -80,6 +81,7 @@
         </div>
         <div class="tabs" id="menu-tabs" role="tablist"></div>
         <div id="menu-body"></div>
+        <p class="note"><a href="menu.html" data-i18n="menu_qr_link">Open the menu on its own page</a></p>
         <p class="note" data-i18n="menu_tax">Prices in Jordanian dinars. 10% service charge and 16% sales tax are added.</p>
       </div>
     </section>
@@ -100,6 +102,26 @@
           <button class="shot" type="button"><img src="assets/img/grilled-chicken.jpg" alt="Grilled chicken with mashed potato" loading="lazy"></button>
           <button class="shot" type="button"><img src="assets/img/spaghetti.jpg" alt="Spaghetti bolognese" loading="lazy"></button>
         </div>
+      </div>
+    </section>
+
+    <section id="book" class="section section-teal reveal">
+      <div class="wrap book-grid">
+        <div>
+          <p class="eyebrow" data-i18n="book_eyebrow">Reservations</p>
+          <h2 data-i18n="book_title">Book a table</h2>
+          <p data-i18n="book_sub">Pick a time and we'll confirm on WhatsApp.</p>
+        </div>
+        <!-- INTERACTIVE 7: booking form. Nothing is stored; it opens WhatsApp with the request written out. -->
+        <form class="book-form" id="book-form">
+          <label><span data-i18n="f_name">Name</span><input name="name" required autocomplete="name"></label>
+          <label><span data-i18n="f_guests">Guests</span>
+            <select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option></select></label>
+          <label><span data-i18n="f_date">Date</span><input name="date" type="date" required></label>
+          <label><span data-i18n="f_time">Time</span><select name="time" id="book-time"></select></label>
+          <label class="full"><span data-i18n="f_note">Anything we should know?</span><input name="note" data-i18n-placeholder="f_note_ph" placeholder="Birthday, window seat, high chair..."></label>
+          <button class="btn full" type="submit" data-i18n="f_send">Send on WhatsApp</button>
+        </form>
       </div>
     </section>
 

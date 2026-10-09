@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu | The Coffee Chamber</title>
+  <meta name="description" content="The full menu of The Coffee Chamber, The St. Regis Amman, in English and Arabic.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<!-- The page the table QR codes open. Same menu data (assets/js/menu.js) as the home page. -->
+<body class="menu-page">
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="./" data-i18n="name">The Coffee Chamber</a>
+      <nav class="nav">
+        <a href="./" data-i18n="back_home">Back to the website</a>
+        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="menu" class="section">
+      <div class="wrap">
+        <h1 class="menu-page-title" data-i18n="menu_eyebrow">The menu</h1>
+        <div class="menu-tools">
+          <input class="search" id="menu-search" type="search" placeholder="Search the menu" data-i18n-placeholder="search">
+        </div>
+        <div class="tabs" id="menu-tabs" role="tablist"></div>
+        <div id="menu-body"></div>
+        <p class="note" data-i18n="menu_tax">Prices in Jordanian dinars. 10% service charge and 16% sales tax are added.</p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/menu.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

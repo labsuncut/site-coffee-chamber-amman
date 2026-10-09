@@ -150,3 +150,25 @@ html[dir="rtl"] .hours th, html[dir="rtl"] .hours td { padding: 7px 0 7px 28px; 
   *, .reveal, .hero-img { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Booking */
+.section-teal { background: var(--teal); color: #fff; }
+.section-teal .eyebrow { color: var(--gold-soft); }
+.book-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: center; }
+.book-grid p { color: #d6e3e1; }
+.book-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; background: rgba(0,0,0,0.18); padding: 24px; border-radius: var(--radius); }
+.book-form label { display: grid; gap: 6px; font-size: 0.9rem; color: #d6e3e1; }
+.book-form .full { grid-column: 1 / -1; }
+.book-form input, .book-form select { font: inherit; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.95); color: var(--ink); width: 100%; }
+.book-form input:focus, .book-form select:focus { outline: 2px solid var(--gold); }
+.book-form .btn { border: 0; cursor: pointer; font: inherit; font-weight: 600; }
+
+/* Stand-alone menu page (menu.html), opened from the table QR code */
+.menu-page .section { padding-top: 32px; }
+.menu-page .tabs { position: sticky; top: 66px; z-index: 5; background: var(--bg); padding-top: 10px; }
+
+@media (max-width: 760px) {
+  .book-grid { grid-template-columns: 1fr; gap: 20px; }
+  .book-form { grid-template-columns: 1fr 1fr; padding: 18px; }
+}
+.menu-page-title { font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: 0; }

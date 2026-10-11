@@ -73,6 +73,27 @@
       </div>
     </section>
 
+    <!-- INTERACTIVE 8: the barista's pour, played by your scroll (assets/js/pour.js).
+         The frames are photos from the café's own video, in assets/img/pour/. -->
+    <section id="pour" class="pour" aria-label="How we make your coffee">
+      <div class="pour-sticky">
+        <div class="pour-frame">
+          <canvas class="pour-canvas" id="pour-canvas" aria-hidden="true"></canvas>
+          <img class="pour-poster" src="assets/img/pour/127.webp" loading="lazy" alt="Latte art in a Coffee Chamber cup">
+        </div>
+        <div class="wrap pour-copy">
+          <p class="eyebrow" data-i18n="latte_eyebrow">Made by hand</p>
+          <h2 class="gradient-text" data-i18n="latte_title">Every cup, poured with care</h2>
+          <ol class="pour-steps" id="pour-steps">
+            <li class="is-active" data-i18n="latte_1">It starts with an illy espresso.</li>
+            <li data-i18n="latte_2">Then silky steamed milk.</li>
+            <li data-i18n="latte_3">Finished with latte art, at your table.</li>
+          </ol>
+          <a class="btn btn-ghost" href="#menu" data-i18n="latte_cta">See the coffee menu</a>
+        </div>
+      </div>
+    </section>
+
     <section id="story" class="section story reveal">
       <div class="wrap story-grid">
         <div class="story-img">
@@ -184,5 +205,6 @@
 
   <script src="assets/js/menu.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/pour.js"></script>
 </body>
 </html>

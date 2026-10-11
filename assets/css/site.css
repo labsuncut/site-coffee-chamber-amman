@@ -225,3 +225,33 @@ html[dir="rtl"] .story-img::before { inset: -14px -14px 14px 14px; }
   .menu-page .nav a { display: none; }
   .menu-page .nav .lang-toggle { margin-top: 0; }
 }
+
+/* 8. Scroll video (assets/js/pour.js). The section is 3 screens tall; the inside
+   sticks to the screen while you scroll, and the frames play with your finger. */
+.pour { position: relative; height: 300vh; background: var(--charcoal); color: #fff; }
+.pour-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; }
+.pour-frame { position: absolute; top: calc(50% + 33px); inset-inline-end: max(20px, calc((100vw - 1120px) / 2 + 20px)); transform: translateY(-50%);
+  height: min(calc(100vh - 120px), 760px); aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #000;
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,0.8), 0 0 0 1px rgba(198,167,104,0.35); }
+.pour-canvas, .pour-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.pour.is-ready .pour-poster { visibility: hidden; }
+.pour-copy { position: relative; z-index: 1; width: 100%; }
+.pour-copy > * { max-width: 30rem; }
+.pour-steps { list-style: none; padding: 0; margin: 24px 0 28px; display: grid; gap: 14px; }
+.pour-steps li { font-size: 1.15rem; color: rgba(255,255,255,0.35); padding-inline-start: 18px; border-inline-start: 2px solid rgba(198,167,104,0.2); transition: color .4s, border-color .4s, transform .4s; }
+.pour-steps li.is-active { color: #fff; border-color: var(--gold); transform: translateX(6px); }
+html[dir="rtl"] .pour-steps li.is-active { transform: translateX(-6px); }
+@media (max-width: 760px) {
+  /* Phones: the video fills the screen, the words sit on a dark fade at the bottom */
+  .pour-sticky { align-items: flex-end; }
+  .pour-frame { inset: 0; transform: none; height: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
+  .pour-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,19,18,0.15) 0%, rgba(20,19,18,0) 35%, rgba(20,19,18,0.92) 82%); }
+  .pour-copy { padding-bottom: 96px; }
+  .pour-steps { margin: 14px 0 20px; gap: 8px; }
+  .pour-steps li { font-size: 1rem; color: rgba(255,255,255,0.5); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pour { height: auto; }
+  .pour-sticky { position: relative; min-height: 100vh; }
+  .pour-steps li { color: #fff; }
+}

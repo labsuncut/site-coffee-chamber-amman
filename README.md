@@ -15,3 +15,4 @@ Website for The Coffee Chamber, a café at The St. Regis Amman, Fifth Circle, Am
 | Colours and fonts | top of `assets/css/site.css` |
 | Table QR card (print it) | `qr.html`; the code itself is `assets/img/menu-qr.svg` |
 | Photos | `assets/img/`, and the gallery section of `index.html` |
+| 3D latte (cup colour, logo, how it turns) | `assets/js/latte3d.js`; the logo on the cup is `assets/img/logo-badge.webp`; three.js itself is in `assets/js/vendor/` (do not edit) |

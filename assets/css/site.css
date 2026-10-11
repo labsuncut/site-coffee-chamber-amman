@@ -230,9 +230,10 @@ html[dir="rtl"] .story-img::before { inset: -14px -14px 14px 14px; }
    sticks to the screen while you scroll, and the frames play with your finger. */
 .pour { position: relative; height: 300vh; background: var(--charcoal); color: #fff; }
 .pour-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; }
-.pour-frame { position: absolute; top: calc(50% + 33px); inset-inline-end: max(20px, calc((100vw - 1120px) / 2 + 20px)); transform: translateY(-50%);
-  height: min(calc(100vh - 120px), 760px); aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #000;
-  box-shadow: 0 40px 80px -30px rgba(0,0,0,0.8), 0 0 0 1px rgba(198,167,104,0.35); }
+.pour-frame { position: absolute; inset: 0; background: #000; }
+/* Dark fade behind the words so they stay readable over the video */
+.pour-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,19,18,0.7) 0%, rgba(20,19,18,0.25) 45%, rgba(20,19,18,0) 60%); }
+html[dir="rtl"] .pour-frame::after { background: linear-gradient(270deg, rgba(20,19,18,0.7) 0%, rgba(20,19,18,0.25) 45%, rgba(20,19,18,0) 60%); }
 .pour-canvas, .pour-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .pour.is-ready .pour-poster { visibility: hidden; }
 .pour-copy { position: relative; z-index: 1; width: 100%; }
@@ -244,8 +245,7 @@ html[dir="rtl"] .pour-steps li.is-active { transform: translateX(-6px); }
 @media (max-width: 760px) {
   /* Phones: the video fills the screen, the words sit on a dark fade at the bottom */
   .pour-sticky { align-items: flex-end; }
-  .pour-frame { inset: 0; transform: none; height: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
-  .pour-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,19,18,0.15) 0%, rgba(20,19,18,0) 35%, rgba(20,19,18,0.92) 82%); }
+  .pour-frame::after, html[dir="rtl"] .pour-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,19,18,0.15) 0%, rgba(20,19,18,0) 35%, rgba(20,19,18,0.92) 82%); }
   .pour-copy { padding-bottom: 96px; }
   .pour-steps { margin: 14px 0 20px; gap: 8px; }
   .pour-steps li { font-size: 1rem; color: rgba(255,255,255,0.5); }

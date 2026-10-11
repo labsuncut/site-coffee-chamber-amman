@@ -40,12 +40,54 @@ const frameUrl = i => `assets/img/pour/${String(i + 1).padStart(3, '0')}.webp`;
     update();
   }
 
-  // Draw a photo so it fills the canvas without stretching (like CSS "object-fit: cover").
+  // A tiny copy of the photo, stretched back up, gives a soft blur that works in every browser.
+  // Shrinking in two steps and growing back keeps it smooth instead of blocky.
+  const tiny = document.createElement('canvas'), mid = document.createElement('canvas');
+  tiny.width = 27; tiny.height = 48; mid.width = 216; mid.height = 384;
+  const tctx = tiny.getContext('2d'), mctx = mid.getContext('2d');
+
+  // Draw img to fill a w x h box at (x, y) without stretching (like CSS "object-fit: cover").
+  function cover(c, img, x, y, w, h) {
+    const nw = img.naturalWidth || img.width, nh = img.naturalHeight || img.height;   // photos or canvases
+    const scale = Math.max(w / nw, h / nh);
+    const iw = nw * scale, ih = nh * scale;
+    c.drawImage(img, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih);
+  }
+
   function draw(img) {
     const cw = canvas.width, ch = canvas.height;
-    const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
-    const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
-    ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+    // Phones (tall screens): the video simply fills the screen.
+    if (cw / ch < 0.9) { cover(ctx, img, 0, 0, cw, ch); return; }
+
+    // Wide screens: a blurred, darkened copy fills the background...
+    tctx.clearRect(0, 0, tiny.width, tiny.height);
+    cover(tctx, img, 0, 0, tiny.width, tiny.height);
+    mctx.imageSmoothingQuality = 'high';
+    mctx.drawImage(tiny, 0, 0, mid.width, mid.height);
+    ctx.imageSmoothingQuality = 'high';
+    cover(ctx, mid, -cw * 0.05, -ch * 0.05, cw * 1.1, ch * 1.1);
+    ctx.fillStyle = 'rgba(20,19,18,0.3)';
+    ctx.fillRect(0, 0, cw, ch);
+
+    // ...and the sharp video plays on top, on the side away from the words.
+    const dpr = cw / canvas.clientWidth, header = 66 * dpr;
+    const h = Math.min(ch - header - 48 * dpr, 760 * dpr), w = h * 9 / 16;
+    const margin = Math.max(20 * dpr, (cw - 1120 * dpr) / 2 + 20 * dpr);
+    const rtl = document.documentElement.dir === 'rtl';
+    const x = rtl ? margin : cw - margin - w, y = header + (ch - header - h) / 2;
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 50 * dpr; ctx.shadowOffsetY = 24 * dpr;
+    ctx.beginPath();
+    ctx.roundRect ? ctx.roundRect(x, y, w, h, 22 * dpr) : ctx.rect(x, y, w, h);
+    ctx.fillStyle = '#000'; ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.clip();
+    cover(ctx, img, x, y, w, h);
+    ctx.restore();
+    ctx.strokeStyle = 'rgba(198,167,104,0.45)'; ctx.lineWidth = 1.5 * dpr;
+    ctx.beginPath();
+    ctx.roundRect ? ctx.roundRect(x, y, w, h, 22 * dpr) : ctx.rect(x, y, w, h);
+    ctx.stroke();
   }
 
   function update() {
@@ -80,6 +122,8 @@ const frameUrl = i => `assets/img/pour/${String(i + 1).padStart(3, '0')}.webp`;
     });
     resize();
     window.addEventListener('resize', resize);
+    // Switching language flips the page, so redraw the video on the other side.
+    new MutationObserver(resize).observe(document.documentElement, { attributes: true, attributeFilter: ['dir'] });
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (ticking) return;
